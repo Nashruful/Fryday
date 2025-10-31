@@ -1,0 +1,48 @@
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+/[Ss]napshotCaptures/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+
+# Unity-specific files
+*.unitypackage
+*.asset
+*.meta
+*.prefs
+*.pvr
+*.pvrtc
+*.fsh
+*.vsh
+*.shader
+*.cginc
+*.rsp
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+
+# Optional: Ignore specific assets or packages if desired
+# Example: Ignore all Blender backup files
+# *.blend1
+# *.blend2
