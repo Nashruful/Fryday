@@ -2297,7 +2297,7 @@ MonoBehaviour:
   minPitch: -45
   maxPitch: 75
   standardGravity: -9.81
-  floatingGravity: -2
+  floatingGravity: -20
   jumpHeight: 1.5
   escapeJumpForce: 5
 --- !u!33 &1185361101
@@ -3337,6 +3337,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6304496785730953174, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.566
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304496785730953174, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.274
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304496785730953174, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304496785730953174, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
@@ -3430,7 +3442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8909828178825955724, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.15
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 8909828178825955724, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3438,7 +3450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8909828178825955724, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.79
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 8909828178825955724, guid: 7e1fb0c51af3e334da5e801c5e0d5f22, type: 3}
       propertyPath: m_LocalRotation.w
