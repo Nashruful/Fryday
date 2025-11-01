@@ -74,19 +74,16 @@ public class PlayerController : MonoBehaviour
     void HandleCameraRotation()
     {
         // Get mouse input and accumulate the target rotation
-        targetYaw += Input.GetAxis("Mouse X") * lookSpeed;
-        targetPitch -= Input.GetAxis("Mouse Y") * lookSpeed;
+        // --- CHANGE THIS LINE ---
+        // Instead of using the public "lookSpeed" variable, use our new global setting.
+        targetYaw += Input.GetAxis("Mouse X") * SettingsManager.LookSensitivity;
+        targetPitch -= Input.GetAxis("Mouse Y") * SettingsManager.LookSensitivity;
 
-        // Clamp the vertical (pitch) rotation to prevent the camera from flipping over
+        // (The rest of the function stays exactly the same)
         targetPitch = Mathf.Clamp(targetPitch, minPitch, maxPitch);
-
-        // Smoothly interpolate the current rotation values towards the target values
         currentYaw = Mathf.Lerp(currentYaw, targetYaw, cameraSmoothSpeed * Time.deltaTime);
         currentPitch = Mathf.Lerp(currentPitch, targetPitch, cameraSmoothSpeed * Time.deltaTime);
-
-        // Apply the rotation. The parent object handles horizontal (yaw) rotation for camera orbit.
         transform.eulerAngles = new Vector3(0, currentYaw, 0);
-        // The camera pivot handles vertical (pitch) rotation.
         cameraPivot.localEulerAngles = new Vector3(currentPitch, 0, 0);
     }
 
