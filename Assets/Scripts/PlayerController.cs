@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Assign the 'Model' GameObject which contains your chicken's mesh.")]
     public Transform characterModel;
 
+    [Tooltip("Assign the Chef object from your scene here.")]
+    public ChefAI chefAI;
+
     [Header("Movement")]
     [Tooltip("The walking speed of the character.")]
     public float speed = 5.0f;
@@ -160,13 +163,43 @@ public class PlayerController : MonoBehaviour
         else if (objectTag == "Ground")
         {
             isImmobilized = true;
+
+            if (chefAI != null)
+            {
+                chefAI.AlertChef();
+            }
+        }
+    }
+
+    // ADD THIS ENTIRE NEW FUNCTION TO PlayerController.cs
+
+    void OnTriggerEnter(Collider other)
+    {
+        // Check if the trigger we entered has the "SafeZone" tag.
+        if (other.CompareTag("SafeZone"))
+        {
+            // If it does, tell the Chef to stop chasing.
+            if (chefAI != null)
+            {
+                chefAI.PlayerIsInSafeZone();
+            }
         }
     }
 
     // This public function can be called from other scripts (like PanEscape)
-    public void PerformJump()
+    //public void PerformJump()
+    //{
+    //    // Set the vertical velocity directly to the escape jump force
+    //    yVelocity = escapeJumpForce;
+    //}
+    public void WakeUpAndEscapePan()
     {
-        // Set the vertical velocity directly to the escape jump force
+        Debug.Log("Player is waking up and escaping!");
+
+        // This is the critical fix: Reset the immobilized state.
+        isImmobilized = false;
+
+        // Perform the jump from the old function.
         yVelocity = escapeJumpForce;
     }
 }

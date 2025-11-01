@@ -10,7 +10,7 @@ public class PanEscape : MonoBehaviour
 
     public Renderer chickenRenderer;
     public Color fullyCookedColor = Color.black;
-    private Color startCookingColor; // MODIFIED: This will store the color when cooking starts
+    private Color startCookingColor; 
 
     public GameManager gameManager;
     private PlayerController playerController;
@@ -18,7 +18,6 @@ public class PanEscape : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        // We don't need to store the original color anymore
     }
 
     void Update()
@@ -26,7 +25,6 @@ public class PanEscape : MonoBehaviour
         if (isInPan)
         {
             currentCookTime += Time.deltaTime;
-            // MODIFIED: Lerp from the color we had when we entered the pan to fully cooked
             chickenRenderer.material.color = Color.Lerp(startCookingColor, fullyCookedColor, currentCookTime / cookTime);
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -53,7 +51,6 @@ public class PanEscape : MonoBehaviour
         currentPresses = 0;
         playerController.enabled = false;
 
-        // NEW: Capture the chicken's current color at the moment it enters the pan
         startCookingColor = chickenRenderer.material.color;
     }
 
@@ -61,10 +58,9 @@ public class PanEscape : MonoBehaviour
     {
         isInPan = false;
 
-        // REMOVED: The line "chickenRenderer.material.color = originalColor;" is gone.
-        // The color is now persistent.
 
-        playerController.PerformJump();
+
+        playerController.WakeUpAndEscapePan();
         playerController.enabled = true;
     }
 }
