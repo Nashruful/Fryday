@@ -39,7 +39,7 @@ public class PanEscape : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        gameManager = FindObjectOfType<GameManager>(); // A good way to find the manager
+        gameManager = FindFirstObjectByType<GameManager>(); // A good way to find the manager
 
         // Make sure the UI is turned off at the start of the game
         if (spacebarPromptUI != null)
@@ -80,6 +80,7 @@ public class PanEscape : MonoBehaviour
             if (currentCookTime >= cookTime)
             {
                 isInPan = false;
+                Sound.Instance.StopCookingSound(); // Stop cooking sound
                 if (spacebarPromptUI != null) spacebarPromptUI.gameObject.SetActive(false);
                 gameManager.LoseGame();
             }
@@ -106,6 +107,7 @@ public class PanEscape : MonoBehaviour
         currentPresses = 0;
         playerController.enabled = false;
         startCookingColor = chickenRenderer.material.color;
+        Sound.Instance.StartCookingSound(); // Start cooking sound
 
         // --- NEW --- Turn on the UI
         if (spacebarPromptUI != null)
@@ -117,6 +119,7 @@ public class PanEscape : MonoBehaviour
     void EscapePan()
     {
         isInPan = false;
+        Sound.Instance.StopCookingSound(); // Stop cooking sound
         playerController.WakeUpAndEscapePan();
         playerController.enabled = true;
 

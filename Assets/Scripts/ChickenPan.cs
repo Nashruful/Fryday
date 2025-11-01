@@ -13,7 +13,7 @@ public class ChickenPan : MonoBehaviour
             if (playerInventory != null && playerInventory.heldIngredient != null)
             {
                 GameObject ingredient = playerInventory.DropAndGiveIngredient();
-
+                Sound.Instance.PlayDropItemSound(); // Play drop sound
                 gameManager.CollectIngredient();
 
                 Destroy(ingredient);

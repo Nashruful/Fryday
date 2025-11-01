@@ -71,6 +71,7 @@ public class ChefAI : MonoBehaviour
                 {
                     currentState = ChefState.Chasing;
                     chaseTimer = chaseDuration;
+                    Sound.Instance.StartChefChaseSound(); // Start chase sound when entering chase state
                 }
                 break;
 
@@ -80,6 +81,7 @@ public class ChefAI : MonoBehaviour
                 // If the chase timer runs out, go back to the table
                 if (chaseTimer <= 0)
                 {
+                    Sound.Instance.StopChefChaseSound(); // Stop chase sound
                     currentState = ChefState.GoingToTable;
                     agent.SetDestination(cookingTableLocation.position);
                     chaseCooldown = Random.Range(timeBetweenChases, timeBetweenChases + 15f);
@@ -121,6 +123,7 @@ public class ChefAI : MonoBehaviour
         Debug.Log("Chef has been alerted by the player falling!");
         currentState = ChefState.Chasing;
         chaseTimer = chaseDuration; // Reset the chase timer to its full duration
+        Sound.Instance.StartChefChaseSound(); // Start chase sound when alerted
     }
 
     public void PlayerIsInSafeZone()
@@ -129,6 +132,7 @@ public class ChefAI : MonoBehaviour
         if (currentState == ChefState.Chasing)
         {
             Debug.Log("Player entered a safe zone! Chef is giving up the chase.");
+            Sound.Instance.StopChefChaseSound(); // Stop chase sound when entering safe zone
 
             // Change state to go back to the table.
             currentState = ChefState.GoingToTable;
@@ -156,6 +160,8 @@ public class ChefAI : MonoBehaviour
     void CatchPlayer()
     {
         currentState = ChefState.CarryingPlayer;
+        Sound.Instance.StopChefChaseSound(); // Stop chase sound
+        Sound.Instance.PlayCatchSound(); // Play catch sound
 
         // Trigger the catching animation
         animator.SetTrigger("Catch");

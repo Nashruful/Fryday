@@ -43,6 +43,7 @@ public class IngredientPickup : MonoBehaviour
         ingredient.transform.SetParent(holdPosition);
         ingredient.transform.localPosition = Vector3.zero;
         ingredient.GetComponent<Collider>().enabled = false;
+        Sound.Instance.PlayGrabItemSound(); // Play grab sound
     }
 
     public GameObject DropAndGiveIngredient()
